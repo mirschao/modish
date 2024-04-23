@@ -1,5 +1,6 @@
 from sanic import Sanic
 from config import default
+from sql_orders.routes import sqlorder_urls
 
 
 def create_app(config_object=default):
@@ -9,6 +10,7 @@ def create_app(config_object=default):
     app.update_config(config_object.TestingConfig)
 
     # registry blueprint.
+    app.blueprint(sqlorder_urls)
 
     return app
 
